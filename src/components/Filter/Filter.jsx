@@ -1,17 +1,22 @@
-import PropTypes from 'prop-types';
 import { Input, Label } from 'components/ContactForm/ContactForm.styled';
 import { BsSearch } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
+import { getFilter } from 'redux/selectors';
 
-export const Filter = ({ onChange, value }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
+  const changeFilter = e => {
+    console.log(e.target);
+    dispatch(setFilter(e.target.value));
+  };
+
   return (
     <Label>
       <BsSearch />
-      <Input type="text" value={value} onChange={onChange} />
+      <Input type="text" value={filter} onChange={() => changeFilter()} />
     </Label>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
