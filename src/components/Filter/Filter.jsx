@@ -9,14 +9,15 @@ export const Filter = () => {
   const filter = useSelector(getFilter);
 
   const changeFilter = e => {
-    console.log(e.target);
+    console.log(e.target.value);
+
     dispatch(setFilter(e.target.value));
   };
 
   return (
     <Label>
       <BsSearch />
-      <Input type="text" value={filter} onChange={() => changeFilter()} />
+      <Input type="text" value={filter} onChange={changeFilter} />
     </Label>
   );
 };

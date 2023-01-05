@@ -1,17 +1,16 @@
 import { deleteContact } from 'redux/contactsSlice';
 import { Button } from '../ContactList.styled';
 import { ContactName, ContactTel } from './ContactItem.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
 
-export const ContactsItem = () => {
+export const ContactsItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
-  const { name, number } = useSelector(getContacts);
+
   return (
     <>
       <ContactName>{name}</ContactName>
       <ContactTel href="tel:{number}">{number}</ContactTel>
-      <Button type="button" onClick={() => dispatch(deleteContact(name))}>
+      <Button type="button" onClick={() => dispatch(deleteContact(id))}>
         Delete
       </Button>
     </>

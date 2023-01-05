@@ -4,9 +4,9 @@ import { Item, List } from './ContactList.styled';
 export const ContactsList = ({ contacts }) => {
   return (
     <List>
-      {contacts.map(({ id }) => (
+      {contacts.map(({ name, number, id }) => (
         <Item key={id}>
-          <ContactsItem />
+          <ContactsItem name={name} number={number} id={id} />
         </Item>
       ))}
     </List>
